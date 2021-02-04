@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who am I</title>
+</head>
+<body>
+    <p>Information will change with your each reload</p>
+    <h1> Name: <span id="username"></span></h1>
+    <h1> Gender: <span id="gender"></span></h1>
+    <h1> Phone: <span id="phone"></span></h1>
+    <h1> City: <span id="city"></span></h1>
+    <h1> Country: <span id="country"></span></h1>
+
+
+    <script>
+        fetch('https://randomuser.me/api/')
+        .then(res => res.json())
+        .then(data => {
+            const user = data.results[0];
+
+            // name
+            const name = user.name;
+            const userName = `${name.title} ${name.first} ${name.last}`;
+            document.getElementById('username').innerText = userName;
+
+            //gender
+            const gender = user.gender;
+            document.getElementById('gender').innerText = gender;
+
+            //phone
+            const phone = user.phone;
+            document.getElementById('phone').innerText = phone;
+
+            //city
+            const city = user.city;
+            document.getElementById('city').innerText = city;
+
+            //country
+            const country = user.country;
+            document.getElementById('country').innerText = country;
+
+        })
+    </script>
+</body>
+</html>
